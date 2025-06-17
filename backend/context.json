@@ -1,0 +1,49 @@
+{
+    "name": "Florian",
+    "title": "X",
+    "skills": [
+        "X",
+        "Y"
+    ],
+    "projects": [
+        "X",
+        "Y"
+    ],
+    "location": "X",
+    "goals": "Y",
+    "about": "Z",
+    "education": {
+        "institution": "X",
+        "degree": "Y",
+        "grad_date": "Z",
+        "relevant_courses": [
+            "X",
+            "Y",
+            "Z"
+        ]
+    },
+    "experience": [
+        {
+            "role": "X",
+            "company": "Y",
+            "tools": [
+                "X",
+                "Y",
+                "Z"
+            ],
+            "duration": "V",
+            "summary": "W"
+        }
+    ],
+    "achievements": [
+        "X",
+        "Y",
+        "Z"
+    ],
+    "contact": {
+        "email": "florian.celibashi@icloud.com",
+        "github": "https://github.com/Florian-Celibashi",
+        "website": "Currently not available",
+        "linkedin": "www.linkedin.com/in/florian-celibashi-88957335a"
+    }
+}
