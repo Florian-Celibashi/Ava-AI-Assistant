@@ -1,49 +1,95 @@
 {
     "name": "Florian",
-    "title": "X",
-    "skills": [
-        "X",
-        "Y"
-    ],
+    "title": "Software Engineer & AI Developer",
+    "skills": [],
     "projects": [
-        "X",
-        "Y"
-    ],
-    "location": "X",
-    "goals": "Y",
-    "about": "Z",
-    "education": {
-        "institution": "X",
-        "degree": "Y",
-        "grad_date": "Z",
-        "relevant_courses": [
-            "X",
-            "Y",
-            "Z"
-        ]
-    },
-    "experience": [
         {
-            "role": "X",
-            "company": "Y",
-            "tools": [
-                "X",
-                "Y",
-                "Z"
-            ],
-            "duration": "V",
-            "summary": "W"
+            "name": "Ava AI Assistant",
+            "description": "Mobile-friendly web chatbot built with FastAPI and GPT-4o, designed to represent me to recruiters. Includes custom memory and dynamic Q&A using OpenAI API.",
+            "technologies": [
+                "Python",
+                "FastAPI",
+                "OpenAI API",
+                "Supabase",
+                "React",
+                "Tailwind"
+            ]
+        },
+        {
+            "name": "Blackjack Online Game",
+            "description": "Browser-based Blackjack game where players face off against the dealer, featuring score tracking and Supabase integration for persistent stats. Designed like a full-stack SaaS product. No signup needed — just play instantly, track your stats, and enjoy a polished, ad-free experience. Built with React, Vite, and Supabase, the app features full CRUD functionality for persistent player stats. Architecture is clean, scalable, and ready for future multiplayer expansion.",
+            "technologies": [
+                "JavaScript",
+                "HTML/CSS",
+                "Supabase",
+                "Vite"
+            ]
+        },
+        {
+            "name": "BuddyBot",
+            "description": "Autonomous Minecraft companion bot powered by OpenAI, using Mineflayer for in-game automation. Built to simulate a believable player assistant.",
+            "technologies": [
+                "Node.js",
+                "Mineflayer",
+                "OpenAI API"
+            ]
         }
     ],
-    "achievements": [
-        "X",
-        "Y",
-        "Z"
+    "location": "Tampa, Florida",
+    "goals": null,
+    "about": null,
+    "education": [
+        {
+            "institution": "University of South Florida",
+            "degree": "Bachelor of Science in Computer Science",
+            "grad_date": "December 2027"
+        },
+        {
+            "institution": "Hillsborough Community College",
+            "degree": "Associate Degree in Computer Science",
+            "grad_date": "May 2025"
+        }
     ],
+    "experience": [
+        {
+            "role": "IT Operations Specialist",
+            "company": "Infotect Design Solutions",
+            "responsibilities": [
+                "Coordinated help desk technician assignments based on the recurring needs and issue scope of 50+ clients.",
+                "Scheduled and managed 50+ daily service tickets.",
+                "Used Excel to run 2+ internal audits daily for executive-level insight.",
+                "Compiled weekly performance reports to help leadership track technician progress."
+            ],
+            "end_date": "March 2024",
+            "start_date": "August 2023",
+            "reason_for_leaving": "Pursue higher education, software engineering, AI development and career growth opportunities."
+        },
+        {
+            "role": "IT Operations Intern",
+            "company": "Infotect Design Solutions",
+            "responsibilities": [
+                "Wrote internal documentation to help standardize workflows and improve team consistency."
+            ],
+            "end_date": "August 2023",
+            "start_date": "July 2023",
+            "reason_for_leaving": "Promoted from intern to full-time IT Operations Specialist; no departure occurred."
+        },
+        {
+            "role": "Customer Service Specialist",
+            "company": "QVC",
+            "responsibilities": [
+                "Resolved over 100 customer service issues daily, focusing on account troubleshooting, order concerns, and tech support."
+            ],
+            "end_date": "March 2023",
+            "start_date": "July 2022",
+            "reason_for_leaving": "Transitioned to an IT Operations Intern role at Infotect to better align with my long-term career path in tech."
+        }
+    ],
+    "achievements": [],
     "contact": {
         "email": "florian.celibashi@icloud.com",
         "github": "https://github.com/Florian-Celibashi",
-        "website": "Currently not available",
+        "website": null,
         "linkedin": "www.linkedin.com/in/florian-celibashi-88957335a"
     }
 }
