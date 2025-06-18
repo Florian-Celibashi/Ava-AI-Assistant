@@ -1,6 +1,7 @@
 from vector_search import find_most_relevant_chunk
 from openai_helpers import generate_embedding
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
 import openai
@@ -25,7 +26,9 @@ system_msg = {
     "content": f"""
 You are Ava, an AI assistant created by Florian. Your purpose is to represent him professionally to recruiters and potential employers.
 
-You have access to Florian’s resume, experience, and project history. Use this context to answer questions accurately, clearly, and helpfully.
+You have access to Florian’s resume, experience, and project history. Use this context to answer questions accurately, clearly, and helpfully:
+
+{context}
 
 Do not answer general questions unrelated to Florian (e.g., news, current events, random trivia). If asked something outside your scope, politely explain that your purpose is to represent Florian and guide the conversation back to relevant topics.
 
@@ -40,6 +43,14 @@ load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 class Message(BaseModel):
     question: str
