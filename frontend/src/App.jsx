@@ -44,12 +44,14 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen mx-auto bg-white shadow-2xl rounded-lg overflow-hidden max-w-2xl border border-gray-300">
-      <div className="flex items-center gap-4 p-4 bg-gray-100 border-b border-gray-300">
-        <img src={avatar} alt="Ava" className="w-18 h-18 rounded-full object-cover border" />
-        <div>
-          <h2 className="font-bold text-2xl">Ava</h2>
-          <p className="text-md text-gray-500 font-semibold">Florian's AI Assistant</p>
+    <div className="flex flex-col h-screen mx-auto bg-white shadow-2xl rounded-lg overflow-hidden max-w-2xl border border-gray-300 relative">
+      <div className="sticky top-0 bg-white z-10">
+        <div className="flex items-center gap-4 p-4 bg-gray-100 border-b border-gray-300">
+          <img src={avatar} alt="Ava" className="w-18 h-18 rounded-full object-cover border" />
+          <div>
+            <h2 className="font-bold text-2xl">Ava</h2>
+            <p className="text-md text-gray-500 font-semibold">Florian's AI Assistant</p>
+          </div>
         </div>
       </div>
 
@@ -72,22 +74,24 @@ function App() {
         )}
       </div>
 
-      <div className="flex items-center gap-2 p-4">
-        <input
-          type="text"
-          className="flex-1 rounded px-3 py-2 text-sm border-gray-300 border"
-          value={input}
-          onChange={e => setInput(e.target.value)}
-          onKeyPress={handleKeyPress}
-          placeholder="Type your message..."
-        />
-        <button
-          onClick={sendMessage}
-          disabled={loading}
-          className="bg-black text-white px-4 py-2 text-sm rounded disabled:opacity-50"
-        >
-          {loading ? '...' : 'Send'}
-        </button>
+      <div className="sticky bottom-0 bg-white z-10">
+        <div className="flex items-center gap-2 p-4">
+          <input
+            type="text"
+            className="flex-1 rounded px-3 py-2 text-sm border-gray-300 border"
+            value={input}
+            onChange={e => setInput(e.target.value)}
+            onKeyPress={handleKeyPress}
+            placeholder="Type your message..."
+          />
+          <button
+            onClick={sendMessage}
+            disabled={loading}
+            className="bg-black text-white px-4 py-2 text-sm rounded disabled:opacity-50"
+          >
+            {loading ? '...' : 'Send'}
+          </button>
+        </div>
       </div>
     </div>
   );
