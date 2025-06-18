@@ -5,7 +5,11 @@
         "startCommand": "uvicorn main:app --host 0.0.0.0 --port $PORT",
         "watchPaths": [
             "backend"
-        ]
+        ],
+        "envs": {
+            "BP_RUNTIME": "python",
+            "BP_PYTHON_VERSION": "3.11"
+        }
     },
     "deploy": {
         "cwd": "backend"
