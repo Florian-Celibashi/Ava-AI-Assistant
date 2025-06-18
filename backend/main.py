@@ -1,10 +1,21 @@
-# main.py
+from vector_search import find_most_relevant_chunk
+from openai_helpers import generate_embedding
 from fastapi import FastAPI
 from pydantic import BaseModel
-import openai
 from dotenv import load_dotenv
-import os
+import openai
 import json
+import os
+
+with open("memory_chunks.json") as f:
+    raw_chunks = json.load(f)
+
+stored_chunks = []
+for chunk in raw_chunks:
+    stored_chunks.append({
+        "text": chunk,
+        "embedding": generate_embedding(chunk)
+    })
 
 with open("context.json") as f:
     context = json.load(f)
@@ -44,10 +55,18 @@ client = OpenAI()  # uses OPENAI_API_KEY from your env
 @app.post("/ask")
 async def ask_ava(msg: Message):
     try:
-        messages = [
-            system_msg,
-            {"role": "user", "content": msg.question}
-        ]
+        relevant_chunk = find_most_relevant_chunk(msg.question, stored_chunks)
+        if relevant_chunk:
+            messages = [
+                system_msg,
+                {"role": "system", "content": f"Relevant fact: {relevant_chunk}"},
+                {"role": "user", "content": msg.question}
+            ]
+        else:
+            messages = [
+                system_msg,
+                {"role": "user", "content": msg.question}
+            ]
         response = client.chat.completions.create(
             model="gpt-4o",
             messages=messages
