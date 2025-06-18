@@ -19,7 +19,7 @@ function App() {
     setLoading(true);
 
     try {
-      const res = await axios.post('http://localhost:8000/ask', {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/ask`, {
         question: input
       });
 
