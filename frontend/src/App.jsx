@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import avatar from '../public/avatar.jpeg';
 import './App.css';
@@ -9,6 +9,14 @@ function App() {
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    if (!loading) {
+      bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [messages, loading]);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -44,7 +52,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen mx-auto bg-white shadow-2xl rounded-lg overflow-hidden max-w-2xl border border-gray-300">
+    <div className="flex flex-col h-screen w-screen md:w-3xl max-w-full mx-auto bg-white shadow-2xl overflow-hidden border border-gray-300">
       <div className="flex items-center gap-4 p-4 bg-gray-100 border-b border-gray-300">
         <img src={avatar} alt="Ava" className="w-18 h-18 rounded-full object-cover border" />
         <div>
@@ -70,6 +78,7 @@ function App() {
             Ava is typing...
           </div>
         )}
+        <div ref={bottomRef} />
       </div>
 
       <div className="flex items-center gap-2 p-4">
