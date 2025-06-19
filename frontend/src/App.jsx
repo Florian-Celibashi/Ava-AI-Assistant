@@ -81,10 +81,10 @@ function App() {
         <div ref={bottomRef} />
       </div>
 
-      <div className="flex items-center gap-2 p-4">
+      <div className="flex items-center gap-2 p-4 bg-gray-100 border-t border-gray-300">
         <input
           type="text"
-          className="flex-1 rounded px-3 py-2 text-sm border-gray-300 border"
+          className="flex-1 rounded px-3 py-2 text-sm border-gray-300 bg-white border"
           value={input}
           onChange={e => setInput(e.target.value)}
           onKeyPress={handleKeyPress}
