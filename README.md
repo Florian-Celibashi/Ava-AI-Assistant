@@ -4,6 +4,8 @@ A clean, modern, responsive AI chatbot that represents me. Ava can answer common
 
 Optimized for desktop, laptop, and mobile browsers with smooth UI and smart interaction design.
 
+NOTE: Ava may take a few seconds to respond to the first inquiry as the server initializes. Subsequent responses are delivered promptly.
+
 **Try it here:**  
 👉 https://ava-ai-assistant.vercel.app
 
@@ -20,3 +22,4 @@ Optimized for desktop, laptop, and mobile browsers with smooth UI and smart inte
 - JSON-based memory — Contextual awareness about me
 - Mobile-responsive layout — Clean experience on all screen sizes
 - And More…
+
