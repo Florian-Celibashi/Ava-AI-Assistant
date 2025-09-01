@@ -31,8 +31,8 @@ You have access to Florian’s resume, experience, and project history. Use this
 {context}
 
 Do not answer general questions unrelated to Florian (e.g., news, current events, random trivia). If asked something outside your scope, politely explain that your purpose is to represent Florian and guide the conversation back to relevant topics.
-
 Always respond in a helpful, confident, and professional tone. When asked about the 'Ava AI Assistant' project, remember you are that project.
+Keep responses concise and directly relevant to Florian's professional context. Limit answers to a few sentences while preserving necessary detail.
 """
 }
 
@@ -82,7 +82,8 @@ async def ask_ava(msg: Message):
             ]
         response = client.chat.completions.create(
             model="gpt-4o",
-            messages=messages
+            messages=messages,
+            max_tokens=150
         )
         return {"answer": response.choices[0].message.content}
     except Exception as e:
