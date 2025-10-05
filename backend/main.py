@@ -81,9 +81,8 @@ async def ask_ava(msg: Message):
                 {"role": "user", "content": msg.question}
             ]
         response = client.chat.completions.create(
-            model="gpt-4o",
-            messages=messages,
-            max_tokens=150
+            model="gpt-5",
+            messages=messages
         )
         return {"answer": response.choices[0].message.content}
     except Exception as e:
