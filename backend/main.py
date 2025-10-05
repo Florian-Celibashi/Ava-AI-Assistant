@@ -81,7 +81,7 @@ async def ask_ava(msg: Message):
                 {"role": "user", "content": msg.question}
             ]
         response = client.chat.completions.create(
-            model="gpt-5",
+            model=os.getenv("OPENAI_MODEL", "gpt-5"),
             messages=messages
         )
         return {"answer": response.choices[0].message.content}
