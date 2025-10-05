@@ -1,25 +1,20 @@
-# 👩 Ava - Personal AI Assistant
+# 🌟 Ava - Personal AI Assistant
 
-A clean, modern, responsive AI chatbot that represents me. Ava can answer common questions about my background, skills, and projects with context awareness — all powered by OpenAI and built from scratch.
+Ava is a conversational AI assistant designed to represent me to recruiters. Ava showcases my practical application of AI APIs, full-stack software design, and systems integration.
 
-Optimized for desktop, laptop, and mobile browsers with smooth UI and smart interaction design.
+💡 Overview
 
-NOTE: Ava may take a few seconds to respond to the first inquiry as the server initializes. Subsequent responses are delivered promptly.
+Ava acts as a first point of contact for recruiters — capable of:
+	•	Answering questions about my skills, background, and portfolio & more.
+	•	Sharing project highlights, GitHub links, and resume details.
 
-**Try it here:**  
-👉 https://ava-ai-assistant.vercel.app
+⚙️ Tech Stack
+Frontend: React (Vite + Tailwind)
+Backend: FastAPI (Python)
+AI Model: OpenAI GPT-5
+Front-end Hosting: Vercel
+Back-end Hosting: Render
 
-### 🛠 Built With
-- React — Frontend UI framework
-- Tailwind CSS — Utility-first styling
-- Vite — Lightning-fast development/build tool
-- FastAPI — Python backend serving the AI logic
-- OpenAI API (GPT-4o) — Natural language generation
-- Numpy & Embeddings — Vector search for memory recall
-- Axios — Frontend-to-backend communication
-- Render — Backend hosting
-- Vercel — Frontend deployment
-- JSON-based memory — Contextual awareness about me
-- Mobile-responsive layout — Clean experience on all screen sizes
-- And More…
-
+💬 Example Prompt
+"Why is Florian a strong fit for our software engineering position?"
+Ava responds with context-relevant, recruiter-friendly summaries based on facts and information about my experience, skillset and interests.
