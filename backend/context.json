@@ -1,7 +1,42 @@
 {
     "name": "Florian",
-    "title": "Software Engineer & AI Developer",
-    "skills": [],
+    "last_name": "Celibashi",
+    "skills": {
+        "languages": [
+            "Python",
+            "JavaScript",
+            "C",
+            "Java",
+            "HTML",
+            "CSS",
+            "SQL"
+        ],
+        "frameworks_libraries": [
+            "React",
+            "Node.js",
+            "FastAPI",
+            "Tailwind CSS",
+            "Supabase",
+            "Axios",
+            "ESLint",
+            "NumPy"
+        ],
+        "backend_databases": [
+            "REST APIs",
+            "PostgreSQL",
+            "Supabase SQL",
+            "FastAPI stack (Uvicorn, Starlette)"
+        ],
+        "build_deployment": [
+            "Vite",
+            "Docker",
+            "Render",
+            "Vercel",
+            "Git",
+            "GitHub",
+            "Linux command line"
+        ]
+    },
     "projects": [
         {
             "name": "Ava AI Assistant",
@@ -37,8 +72,7 @@
         }
     ],
     "location": "Tampa, Florida",
-    "goals": null,
-    "about": null,
+    "career_objective": "Computer Science student specializing in software engineering and applied AI, with experience building full-stack applications and deploying AI-powered tools.",
     "education": [
         {
             "institution": "University of South Florida",
@@ -48,18 +82,25 @@
         {
             "institution": "Hillsborough Community College",
             "degree": "Associate Degree in Computer Science",
-            "grad_date": "May 2025"
+            "grad_date": "May 2025",
+            "gpa": "3.77"
         }
     ],
     "experience": [
         {
-            "role": "IT Operations Specialist",
+            "role": "Fulfillment Expert",
+            "company": "Target",
+            "responsibilities": [
+                "Processed online orders and collaborated with team members in a fast-paced retail environment."
+            ],
+            "start_date": "August 2025",
+            "end_date": "Current"
+        },
+        {
+            "role": "IT Operations Assistant",
             "company": "Infotect Design Solutions",
             "responsibilities": [
-                "Coordinated help desk technician assignments based on the recurring needs and issue scope of 50+ clients.",
-                "Scheduled and managed 50+ daily service tickets.",
-                "Used Excel to run 2+ internal audits daily for executive-level insight.",
-                "Compiled weekly performance reports to help leadership track technician progress."
+                "Supported daily IT operations, handling service tickets, data audits, and process documentation."
             ],
             "end_date": "March 2024",
             "start_date": "August 2023",
@@ -86,11 +127,9 @@
             "reason_for_leaving": "Transitioned to an IT Operations Intern role at Infotect to better align with my long-term career path in tech."
         }
     ],
-    "achievements": [],
     "contact": {
         "email": "florian.celibashi@icloud.com",
         "github": "https://github.com/Florian-Celibashi",
-        "website": null,
         "linkedin": "www.linkedin.com/in/florian-celibashi-88957335a"
     }
 }
