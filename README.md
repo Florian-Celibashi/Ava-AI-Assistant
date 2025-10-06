@@ -1,7 +1,8 @@
 # 🌟 Ava - Personal AI Assistant
 Ava is live. Check it out here: https://ava-ai-assistant.vercel.app  
-
-  
+```
+Ava is live: https://ava-ai-assistant.vercel.app
+```
 💡 Overview  
 
 Ava is a conversational AI assistant designed to represent me to recruiters. Ava showcases my practical application of AI APIs, full-stack software design, and systems integration. Ava acts as a first point of contact for recruiters — capable of:  
@@ -25,12 +26,6 @@ Back-end Hosting: Render
 
 💬 Example Prompt  
 
-"Why is Florian a strong fit for our software engineering position?"  
+"Is Florian a good fit for our culture? Is Florian a strong candidate for our software engineering position?"  
 
-Ava responds with context-relevant, recruiter-friendly summaries based on facts and information about my experience, skillset and interests.  
-
-
-
-
-
-
+Ava responds with context-relevant, recruiter-friendly summaries based on facts and information about my experience, skillset and interests.
