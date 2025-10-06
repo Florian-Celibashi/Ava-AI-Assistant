@@ -1,7 +1,7 @@
 # 🌟 Ava - Personal AI Assistant
-Ava is live. Check it out here: https://ava-ai-assistant.vercel.app  
+Ava is live. Check it out here:
 ```
-Ava is live: https://ava-ai-assistant.vercel.app
+https://ava-ai-assistant.vercel.app
 ```
 💡 Overview  
 
