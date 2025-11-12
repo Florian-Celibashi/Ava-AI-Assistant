@@ -1,55 +1,20 @@
-import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
+import { useRef } from 'react';
 import avatar from '../public/avatar.jpeg';
 import './App.css';
-import StartupNotice from "./components/StartupNotice";
+import StartupNotice from './components/StartupNotice';
+import { useAvaChat } from './hooks/useAvaChat';
+import { useScrollToBottom } from './hooks/useScrollToBottom';
 
 function App() {
-  const [messages, setMessages] = useState([
-    { role: 'system', content: 'Hi! I\'m Ava. How can I assist?' }
-  ]);
-  const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
-
+  const { input, loading, messages, sendMessage, setInput } = useAvaChat();
   const bottomRef = useRef(null);
 
-  useEffect(() => {
-    if (!loading) {
-      bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
+  useScrollToBottom(bottomRef, [messages, loading], !loading);
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      sendMessage();
     }
-  }, [messages, loading]);
-
-  const sendMessage = async () => {
-    if (!input.trim()) return;
-
-    const userMessage = { role: 'user', content: input };
-    setMessages([...messages, userMessage]);
-    setInput('');
-    setLoading(true);
-
-    try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/ask`, {
-        question: input
-      });
-
-      const botReply = {
-        role: 'assistant',
-        content: res.data.answer || 'No response received.'
-      };
-
-      setMessages(prev => [...prev, botReply]);
-    } catch (err) {
-      setMessages(prev => [...prev, {
-        role: 'assistant',
-        content: 'Error: Could not reach Ava backend.'
-      }]);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') sendMessage();
   };
 
   return (
@@ -88,7 +53,7 @@ function App() {
           type="text"
           className="flex-1 rounded px-3 py-2 text-sm border-gray-300 bg-white border"
           value={input}
-          onChange={e => setInput(e.target.value)}
+          onChange={(event) => setInput(event.target.value)}
           onKeyPress={handleKeyPress}
           placeholder="Type your message..."
         />
@@ -102,7 +67,6 @@ function App() {
       </div>
     </div>
   );
-
 }
 
 export default App;
