@@ -112,6 +112,3 @@ ava-ai-assistant/
 - Fine-tuning workflows to align with company-specific tone & policies.
 - Analytics dashboards highlighting funnel bottlenecks and FAQ deflection rates.
 - Automated compliance checks for job descriptions and outreach copy.
-
-## 📄 License
-Released under the MIT License. Update `LICENSE` with your organization’s preferred terms if needed.
