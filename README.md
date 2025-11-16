@@ -1,4 +1,7 @@
 # Ava AI Assistant – Recruiter-Facing Copilot
+https://ava-ai-assistant.vercel.app
+
+⚠️ Ava is currently my personal AI assistant. Any recruiter-focused features described in this README represent future direction, not current functionality.
 
 ## 🧭 Overview
 Ava is a recruiter-facing AI assistant that helps talent teams get instant answers about roles, candidates, and hiring processes. It blends conversational intelligence, resume summarization, and structured data retrieval so that every recruiter can act with a personal research partner.
