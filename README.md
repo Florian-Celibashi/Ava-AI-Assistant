@@ -60,18 +60,6 @@ VITE_API_URL=http://localhost:8000
 VITE_BACKEND_URL=http://localhost:8000
 ```
 
-## 🚀 Usage Examples
-```bash
-# Run backend API
-cd backend
-uvicorn main:app --reload --port 8000
-
-# Run frontend dev server
-cd frontend
-npm run dev
-```
-Visit `http://localhost:5173`, introduce yourself, and Ava will respond with context-grounded answers from Florian's profile.
-
 ## 📁 Folder Structure
 ```
 Ava-AI-Assistant/
@@ -93,6 +81,3 @@ Ava-AI-Assistant/
 - Introduce authentication for recruiter-only insights.
 - Implement analytics dashboard for session metrics.
 - Expand retrieval store to a managed vector DB (Pinecone/Weaviate).
-
-## 📜 License
-MIT License. Use, modify, and deploy with attribution to the original author.
