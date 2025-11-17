@@ -1,78 +1,93 @@
 {
     "name": "Florian",
     "last_name": "Celibashi",
+    "bio": "Full-Stack Developer focused on building real products with clean, scalable architecture. Always exploring AI, automation, and the edge of what is possible.",
+    "career_objective": "Seeking software engineering or AI engineering internships where I can contribute to real products and continue growing as a developer.",
+    "location": "Tampa, Florida",
+    "contact": {
+        "email": "florian.celibashi@icloud.com",
+        "github": "https://github.com/Florian-Celibashi",
+        "linkedin": "https://www.linkedin.com/in/florian-celibashi-88957335a",
+        "phone_number": "727-283-9003"
+    },
     "skills": {
         "languages": [
             "Python",
             "JavaScript",
             "C",
+            "C++",
             "Java",
-            "HTML",
-            "CSS",
             "SQL"
         ],
-        "frameworks_libraries": [
+        "frontend": [
             "React",
+            "Tailwind",
+            "Vite",
+            "HTML/CSS"
+        ],
+        "backend": [
             "Node.js",
             "FastAPI",
-            "Tailwind CSS",
-            "Supabase",
-            "Axios",
-            "ESLint",
-            "NumPy"
-        ],
-        "backend_databases": [
             "REST APIs",
             "PostgreSQL",
-            "Supabase SQL",
-            "FastAPI stack (Uvicorn, Starlette)"
+            "Supabase"
         ],
-        "build_deployment": [
-            "Vite",
+        "AI": [
+            "OpenAI API",
+            "Prompt Engineering",
+            "LangChain",
+            "Retrieval-Augmented Generation (RAG)"
+        ],
+        "devOps_deployment": [
             "Docker",
-            "Render",
             "Vercel",
+            "Render",
             "Git",
             "GitHub",
-            "Linux command line"
+            "Linux CLI"
         ]
     },
     "projects": [
         {
             "name": "Ava AI Assistant",
-            "description": "Mobile-friendly web chatbot built with FastAPI and GPT-4o, designed to represent me to recruiters. Includes custom memory and dynamic Q&A using OpenAI API.",
+            "description": "AI copilot that represents Florian professionally to recruiters and collaborators.",
             "technologies": [
+                "Node.js",
                 "Python",
                 "FastAPI",
                 "OpenAI API",
-                "Supabase",
                 "React",
-                "Tailwind"
+                "Tailwind",
+                "Render",
+                "Vercel"
             ]
         },
         {
             "name": "Blackjack Online Game",
-            "description": "Browser-based Blackjack game where players face off against the dealer, featuring score tracking and Supabase integration for persistent stats. Designed like a full-stack SaaS product. No signup needed — just play instantly, track your stats, and enjoy a polished, ad-free experience. Built with React, Vite, and Supabase, the app features full CRUD functionality for persistent player stats. Architecture is clean, scalable, and ready for future multiplayer expansion.",
+            "description": "Browser-based blackjack game with smooth animations, ambient audio, and streak tracking.",
             "technologies": [
+                "Node.js",
                 "JavaScript",
                 "HTML/CSS",
                 "Supabase",
+                "Tailwind",
                 "Vite",
-                "React"
+                "React",
+                "Headless UI",
+                "React Icons"
             ]
         },
         {
-            "name": "BuddyBot",
-            "description": "Autonomous Minecraft companion bot powered by OpenAI, using Mineflayer for in-game automation. Built to simulate a believable player assistant.",
+            "name": "BuddyBot 2.0",
+            "description": "Buddybot 2.0 is a mineflayer-based controller that lets you summon an AI-assisted Minecraft helper directly from server chat commands. It listens to latest.log, spawns a bot with context-aware behaviors, and answers player questions using OpenAI models.",
             "technologies": [
                 "Node.js",
                 "Mineflayer",
-                "OpenAI API"
+                "OpenAI API",
+                "JavaScript"
             ]
         }
     ],
-    "location": "Tampa, Florida",
-    "career_objective": "Computer Science student specializing in software engineering and applied AI, with experience building full-stack applications and deploying AI-powered tools.",
     "education": [
         {
             "institution": "University of South Florida",
@@ -87,15 +102,6 @@
         }
     ],
     "experience": [
-        {
-            "role": "Fulfillment Expert",
-            "company": "Target",
-            "responsibilities": [
-                "Processed online orders and collaborated with team members in a fast-paced retail environment."
-            ],
-            "start_date": "August 2025",
-            "end_date": "Current"
-        },
         {
             "role": "IT Operations Assistant",
             "company": "Infotect Design Solutions",
@@ -114,22 +120,17 @@
             ],
             "end_date": "August 2023",
             "start_date": "July 2023",
-            "reason_for_leaving": "Promoted from intern to full-time IT Operations Specialist; no departure occurred."
+            "reason_for_leaving": "Promoted from intern to IT Operations Specialist; no departure occurred."
         },
         {
             "role": "Customer Service Specialist",
             "company": "QVC",
             "responsibilities": [
-                "Resolved over 100 customer service issues daily, focusing on account troubleshooting, order concerns, and tech support."
+                "Managed high-volume customer inquiries, ensuring timely resolution and satisfaction."
             ],
             "end_date": "March 2023",
             "start_date": "July 2022",
             "reason_for_leaving": "Transitioned to an IT Operations Intern role at Infotect to better align with my long-term career path in tech."
         }
-    ],
-    "contact": {
-        "email": "florian.celibashi@icloud.com",
-        "github": "https://github.com/Florian-Celibashi",
-        "linkedin": "www.linkedin.com/in/florian-celibashi-88957335a"
-    }
+    ]
 }
