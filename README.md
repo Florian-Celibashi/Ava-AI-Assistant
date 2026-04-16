@@ -8,7 +8,6 @@
 ## ✨ Key Features
 - **Context-aware replies** – Local BM25-style chunk retrieval keeps answers grounded in Florian's experience without extra embedding latency.
 - **Modern chat interface** – Responsive React UI with auto-scroll, typing indicators, and avatar branding.
-- **Startup readiness notice** – Pings the backend to surface cold-start messaging for free-tier hosting.
 - **Conversation continuity** – Frontend sends bounded chat history so answers remain consistent across turns.
 - **Configurable OpenAI access** – Environment variables control model, API keys, CORS origins, and cache behavior.
 - **Production-friendly** – Dockerfile, Procfile, and requirements lock in reproducible deployments.
@@ -20,7 +19,7 @@
   - Frontend: React + Vite, Tailwind-esque utility styling
   - Backend: FastAPI, Pydantic, Starlette
 - **Libraries**
-  - Frontend: Fetch API, custom startup notice component
+  - Frontend: Fetch API
   - Backend: OpenAI Python SDK, python-dotenv for secrets
 - **Services**
   - OpenAI Chat Completions API (model default `gpt-4o-mini`, env override supported)
@@ -31,7 +30,6 @@
 - **Prompt Orchestration** – `main.py` assembles system persona, retrieved context snippets, bounded history, and user question.
 - **API Layer** – FastAPI exposes `/api`, `/api/healthz`, `/api/readyz`, and `/api/ask` with strict request validation and response caching.
 - **Frontend Client** – `frontend/src/App.jsx` manages local chat state, optimistic UI updates, and asynchronous responses.
-- **Startup Notice** – `frontend/src/components/StartupNotice.jsx` continuously pings the backend and surfaces cold-start messaging until ready.
 
 ## ⚙️ Setup & Installation
 ```bash
@@ -82,7 +80,6 @@ Ava-AI-Assistant/
 │   └── requirements.txt
 ├── frontend/          # React/Vite chat client
 │   ├── src/App.jsx
-│   ├── src/components/StartupNotice.jsx
 │   └── vite.config.js
 ├── vercel.json        # Single-project build/output config
 ├── requirements.txt   # Python deps for Vercel runtime
