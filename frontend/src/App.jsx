@@ -9,6 +9,7 @@ function renderInlineFormattedText(text) {
   const nodes = [];
   let cursor = 0;
   let match;
+  INLINE_FORMAT_PATTERN.lastIndex = 0;
 
   while ((match = INLINE_FORMAT_PATTERN.exec(text)) !== null) {
     const token = match[0];
@@ -161,7 +162,7 @@ function App() {
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`max-w-[85%] px-4 py-2 rounded-lg text-sm whitespace-pre-wrap break-words ${msg.role === 'user'
+            className={`w-fit max-w-[85%] px-4 py-2 rounded-lg text-sm whitespace-pre-wrap break-words ${msg.role === 'user'
               ? 'ml-auto bg-blue-100 text-gray-800'
               : 'mr-auto bg-indigo-100 text-gray-800'
               }`}
