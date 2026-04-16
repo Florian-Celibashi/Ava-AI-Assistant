@@ -3,6 +3,73 @@ import avatar from '../public/avatar.jpeg';
 import './App.css';
 
 const MAX_HISTORY_MESSAGES = 8;
+const INLINE_FORMAT_PATTERN = /(\*\*[^*]+\*\*|\[[^\]]+\]\(https?:\/\/[^)\s]+\)|https?:\/\/[^\s]+)/g;
+
+function renderInlineFormattedText(text) {
+  const nodes = [];
+  let cursor = 0;
+  let match;
+
+  while ((match = INLINE_FORMAT_PATTERN.exec(text)) !== null) {
+    const token = match[0];
+    if (match.index > cursor) {
+      nodes.push(text.slice(cursor, match.index));
+    }
+
+    if (token.startsWith('**') && token.endsWith('**')) {
+      nodes.push(<strong key={`b-${match.index}`}>{token.slice(2, -2)}</strong>);
+    } else if (token.startsWith('[')) {
+      const linkMatch = token.match(/^\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)$/);
+      if (linkMatch) {
+        nodes.push(
+          <a
+            key={`m-${match.index}`}
+            href={linkMatch[2]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-blue-700 hover:text-blue-800"
+          >
+            {linkMatch[1]}
+          </a>
+        );
+      } else {
+        nodes.push(token);
+      }
+    } else {
+      nodes.push(
+        <a
+          key={`u-${match.index}`}
+          href={token}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline text-blue-700 hover:text-blue-800"
+        >
+          {token}
+        </a>
+      );
+    }
+    cursor = match.index + token.length;
+  }
+
+  if (cursor < text.length) {
+    nodes.push(text.slice(cursor));
+  }
+
+  return nodes;
+}
+
+function renderMessageContent(content, role) {
+  if (role === 'user') {
+    return content;
+  }
+
+  return content.split('\n').map((line, idx, lines) => (
+    <span key={`line-${idx}`}>
+      {renderInlineFormattedText(line)}
+      {idx < lines.length - 1 && <br />}
+    </span>
+  ));
+}
 
 function App() {
   const [messages, setMessages] = useState([
@@ -94,12 +161,12 @@ function App() {
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`max-w-fit px-4 py-2 rounded-lg text-sm ${msg.role === 'user'
+            className={`max-w-[85%] px-4 py-2 rounded-lg text-sm whitespace-pre-wrap break-words ${msg.role === 'user'
               ? 'ml-auto bg-blue-100 text-gray-800'
               : 'mr-auto bg-indigo-100 text-gray-800'
               }`}
           >
-            {msg.content}
+            {renderMessageContent(msg.content, msg.role)}
           </div>
         ))}
         {loading && (
