@@ -1,1 +1,10 @@
-.env.DS_Store
+.DS_Store
+.env
+.env.*
+!.env.example
+backend/.env
+frontend/.env
+
+backend/venv/
+myenv/
+frontend/node_modules/

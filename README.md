@@ -6,29 +6,30 @@
 - Ships with FastAPI backend + Vite/React frontend deployable to Render/Vercel.
 
 ## ✨ Key Features
-- **Context-aware replies** – Embedding-powered chunk retrieval keeps answers grounded in Florian's experience.
+- **Context-aware replies** – Local BM25-style chunk retrieval keeps answers grounded in Florian's experience without extra embedding latency.
 - **Modern chat interface** – Responsive React UI with auto-scroll, typing indicators, and avatar branding.
 - **Startup readiness notice** – Pings the backend to surface cold-start messaging for free-tier hosting.
-- **Configurable OpenAI access** – Environment variables control model, API keys, and CORS origins.
+- **Conversation continuity** – Frontend sends bounded chat history so answers remain consistent across turns.
+- **Configurable OpenAI access** – Environment variables control model, API keys, CORS origins, and cache behavior.
 - **Production-friendly** – Dockerfile, Procfile, and requirements lock in reproducible deployments.
 
 ## 🧰 Tech Stack
 - **Environment**
   - Node.js 20+, Python 3.11+, npm, uvicorn
 - **Frameworks**
-  - Frontend: React 18 + Vite, Tailwind-esque utility styling
+  - Frontend: React + Vite, Tailwind-esque utility styling
   - Backend: FastAPI, Pydantic, Starlette
 - **Libraries**
-  - Frontend: Axios for API calls, custom startup notice component
-  - Backend: OpenAI Python SDK, NumPy, python-dotenv for secrets
+  - Frontend: Fetch API, custom startup notice component
+  - Backend: OpenAI Python SDK, python-dotenv for secrets
 - **Services**
-  - OpenAI Chat Completions API (model default `gpt-5` env override)
+  - OpenAI Chat Completions API (model default `gpt-4o-mini`, env override supported)
   - Optional hosting: Render (backend), Vercel/Netlify (frontend)
 
 ## 🧩 Architecture Overview
-- **Retrieval Layer** – `vector_search.py` embeds stored memory chunks and ranks them against user prompts.
-- **Prompt Orchestration** – `main.py` assembles system persona, context fact injection, and user message before calling OpenAI.
-- **API Layer** – FastAPI exposes `/` health check and `/ask` endpoint, handling CORS and structured request validation.
+- **Retrieval Layer** – `context_index.py` builds a local context index from `context.json` and ranks relevant chunks in-memory.
+- **Prompt Orchestration** – `main.py` assembles system persona, retrieved context snippets, bounded history, and user question.
+- **API Layer** – FastAPI exposes `/`, `/healthz`, `/readyz`, and `/ask` with strict request validation and response caching.
 - **Frontend Client** – `frontend/src/App.jsx` manages local chat state, optimistic UI updates, and asynchronous responses.
 - **Startup Notice** – `frontend/src/components/StartupNotice.jsx` continuously pings the backend and surfaces cold-start messaging until ready.
 
@@ -50,8 +51,14 @@ Create `.env` files at both roots:
 **backend/.env**
 ```bash
 OPENAI_API_KEY=sk-...
-OPENAI_MODEL=gpt-5           # optional override
+OPENAI_MODEL=gpt-4o-mini     # optional override
 FRONTEND_URL=http://localhost:5173
+FRONTEND_URLS=https://your-frontend.example.com
+MAX_CONTEXT_CHUNKS=4
+MAX_HISTORY_MESSAGES=8
+RESPONSE_CACHE_TTL_SECONDS=600
+RESPONSE_CACHE_MAX_ITEMS=256
+OPENAI_TIMEOUT_SECONDS=45
 ```
 
 **frontend/.env**
@@ -63,11 +70,11 @@ VITE_BACKEND_URL=http://localhost:8000
 ## 📁 Folder Structure
 ```
 Ava-AI-Assistant/
-├── backend/           # FastAPI service, embeddings, memory chunks
-│   ├── main.py        # API + OpenAI orchestration
-│   ├── vector_search.py
+├── backend/           # FastAPI service + local retrieval index
+│   ├── main.py        # API + OpenAI orchestration + caching
+│   ├── context_index.py
+│   ├── settings.py
 │   ├── context.json   # Resume/project knowledge base
-│   ├── memory_chunks.json
 │   └── requirements.txt
 ├── frontend/          # React/Vite chat client
 │   ├── src/App.jsx

@@ -2,7 +2,7 @@
     "name": "Florian",
     "last_name": "Celibashi",
     "bio": "Full-Stack Developer focused on building real products with clean, scalable architecture. Always exploring AI, automation, and the edge of what is possible.",
-    "career_objective": "Seeking software engineering or AI engineering internships where I can contribute to real products and continue growing as a developer.",
+    "career_objective": "Seeking software engineering and AI engineering internships where I can contribute to real products, focus on clean architecture, and continue growing through practical execution.",
     "location": "Tampa, Florida",
     "resume": "https://florians-resume.vercel.app",
     "contact": {
@@ -18,7 +18,8 @@
             "C",
             "C++",
             "Java",
-            "SQL"
+            "SQL",
+            "HTML/CSS"
         ],
         "frontend": [
             "React",
@@ -29,6 +30,7 @@
         "backend": [
             "Node.js",
             "FastAPI",
+            "Express",
             "REST APIs",
             "PostgreSQL",
             "Supabase"
@@ -46,6 +48,20 @@
             "Git",
             "GitHub",
             "Linux CLI"
+        ],
+        "developer_tools": [
+            "Git",
+            "GitHub",
+            "Vercel",
+            "Docker",
+            "Postman"
+        ],
+        "core_concepts": [
+            "Data Structures",
+            "Algorithms",
+            "REST APIs",
+            "Full-Stack Development",
+            "Database Design"
         ]
     },
     "projects": [
@@ -76,7 +92,25 @@
                 "React",
                 "Headless UI",
                 "React Icons"
-            ]
+            ],
+            "link": "https://florians-blackjack.vercel.app"
+        },
+        {
+            "name": "NoteLink",
+            "description": "Class-organized academic resource platform with search, pagination, and structured browsing by school.",
+            "technologies": [
+                "JavaScript",
+                "Supabase",
+                "SQL",
+                "Vercel",
+                "VirusTotal"
+            ],
+            "highlights": [
+                "Built a class-organized academic resource platform with structured browsing and search.",
+                "Implemented a server-validated upload workflow using Supabase quarantine/public storage and uploader-level ownership.",
+                "Added a malware-scanning pipeline using VirusTotal before public file release."
+            ],
+            "link": "https://notelink-seven.vercel.app"
         },
         {
             "name": "BuddyBot 2.0",
@@ -93,7 +127,8 @@
         {
             "institution": "University of South Florida",
             "degree": "Bachelor of Science in Computer Science",
-            "grad_date": "December 2027"
+            "grad_date": "December 2027",
+            "gpa": "3.64"
         },
         {
             "institution": "Hillsborough Community College",
@@ -104,7 +139,19 @@
     ],
     "experience": [
         {
-            "role": "IT Operations Assistant",
+            "role": "AI Trainer",
+            "company": "Handshake AI",
+            "location": "Remote",
+            "start_date": "November 2025",
+            "end_date": "Present",
+            "responsibilities": [
+                "Evaluated multimodal AI outputs across text, image, audio, and video tasks for prompt adherence and quality.",
+                "Annotated and reviewed data for transcription, image labeling, and side-by-side model evaluation.",
+                "Created synthetic chat interactions and reverse-engineered prompts to support AI training workflows."
+            ]
+        },
+        {
+            "role": "IT Operations Specialist",
             "company": "Infotect Design Solutions",
             "responsibilities": [
                 "Supported daily IT operations, handling service tickets, data audits, and process documentation."
@@ -133,5 +180,62 @@
             "start_date": "July 2022",
             "reason_for_leaving": "Transitioned to an IT Operations Intern role at Infotect to better align with my long-term career path in tech."
         }
-    ]
+    ],
+    "organizations": [
+        {
+            "name": "Society of Hispanic Professional Engineers (SHPE) - USF Chapter",
+            "role": "Tech Team Member",
+            "start_date": "2025",
+            "end_date": "Present",
+            "highlights": [
+                "Contributed to Hackabull planning and execution through judging logistics, workshops, web support, and sponsor coordination.",
+                "Worked closely with the Tech VP on operations and organizational planning.",
+                "Helped recruit 20+ judges from companies including Apple, Meta, Amazon, Microsoft, and Bank of America."
+            ]
+        }
+    ],
+    "leadership_experience": [
+        {
+            "name": "Hackabull",
+            "organization": "SHPE USF",
+            "role": "Tech Team Contributor / Judging Operations Support",
+            "highlights": [
+                "Helped recruit 20+ judges, including software engineers and professionals from Apple, Meta, Amazon, Microsoft, and Bank of America.",
+                "Helped bring Linda, a USF alum and LinkedIn creator, as an in-person judge.",
+                "Authored the judging rubric and helped define judging procedures and documentation.",
+                "Supported logistics, workshops, info sessions, partnerships, and web-related work for the hackathon."
+            ]
+        }
+    ],
+    "leadership_style": {
+        "summary": "Leadership through empowerment, structure, and inclusion.",
+        "principles": [
+            "Give people ownership and choice over what they work on.",
+            "Create clear structure and expectations without becoming rigid.",
+            "Support members' growth, learning, and career development.",
+            "Preserve team spirit while improving organization and accountability."
+        ]
+    },
+    "shpe_tech_vp_context": {
+        "ran_for_position": true,
+        "position": "SHPE Tech VP",
+        "highlights": [
+            "Centered candidacy on structure, inclusion, and sustainable team growth.",
+            "Used Hackabull and Tech Team execution work as concrete leadership examples."
+        ]
+    },
+    "internship_focus": {
+        "target_roles": [
+            "Software Engineering Internship",
+            "AI Engineering Internship"
+        ],
+        "preferences": [
+            "Working on real products",
+            "Clean architecture and scalable systems",
+            "Practical execution and continuous technical growth"
+        ]
+    },
+    "notes": {
+        "scope": "Primary context for resume-aligned recruiter conversations."
+    }
 }

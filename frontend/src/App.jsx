@@ -1,8 +1,15 @@
 import { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
 import avatar from '../public/avatar.jpeg';
 import './App.css';
 import StartupNotice from "./components/StartupNotice";
+
+const API_BASE_URL = (
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_BACKEND_URL ||
+  ''
+).replace(/\/+$/, '');
+
+const MAX_HISTORY_MESSAGES = 8;
 
 function App() {
   const [messages, setMessages] = useState([
@@ -20,28 +27,56 @@ function App() {
   }, [messages, loading]);
 
   const sendMessage = async () => {
-    if (!input.trim()) return;
+    const question = input.trim();
+    if (!question || loading) return;
 
-    const userMessage = { role: 'user', content: input };
-    setMessages([...messages, userMessage]);
+    const userMessage = { role: 'user', content: question };
+    const history = messages
+      .filter((msg) => msg.role === 'user' || msg.role === 'assistant')
+      .slice(-MAX_HISTORY_MESSAGES)
+      .map((msg) => ({ role: msg.role, content: msg.content }));
+
+    setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setLoading(true);
 
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL}/ask`, {
-        question: input
-      });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 60_000);
+      let res;
+      try {
+        res = await fetch(`${API_BASE_URL}/ask`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            question,
+            history
+          }),
+          signal: controller.signal
+        });
+      } finally {
+        clearTimeout(timeoutId);
+      }
+
+      const payload = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(payload.detail || 'Ava backend request failed.');
+      }
 
       const botReply = {
         role: 'assistant',
-        content: res.data.answer || 'No response received.'
+        content: payload.answer || 'No response received.'
       };
 
       setMessages(prev => [...prev, botReply]);
-    } catch (err) {
+    } catch (error) {
+      const fallback = error?.name === 'AbortError'
+        ? 'Error: Request timed out. Please try again.'
+        : 'Error: Could not reach Ava backend.';
+
       setMessages(prev => [...prev, {
         role: 'assistant',
-        content: 'Error: Could not reach Ava backend.'
+        content: fallback
       }]);
     } finally {
       setLoading(false);
@@ -89,7 +124,7 @@ function App() {
           className="flex-1 rounded px-3 py-2 text-sm border-gray-300 bg-white border"
           value={input}
           onChange={e => setInput(e.target.value)}
-          onKeyPress={handleKeyPress}
+          onKeyDown={handleKeyPress}
           placeholder="Type your message..."
         />
         <button

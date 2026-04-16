@@ -1,34 +1,46 @@
 import { useEffect, useState, useRef } from "react";
 
+const API_BASE_URL = (
+    import.meta.env.VITE_BACKEND_URL ||
+    import.meta.env.VITE_API_URL ||
+    ""
+).replace(/\/+$/, "");
+
 export default function StartupNotice() {
     const [visible, setVisible] = useState(true);
     const [checking, setChecking] = useState(true);
     const retryRef = useRef(null);
+    const delayMsRef = useRef(1500);
 
     useEffect(() => {
         const controller = new AbortController();
+        let isMounted = true;
 
         const ping = async () => {
             try {
-                const res = await fetch((import.meta.env.VITE_BACKEND_URL || "") + "/", {
+                const res = await fetch(`${API_BASE_URL}/healthz`, {
                     signal: controller.signal,
                 });
                 if (res.ok) {
+                    if (!isMounted) return;
                     setChecking(false);
                     // hide quickly once backend is ready
                     retryRef.current = setTimeout(() => setVisible(false), 300);
                 } else {
                     throw new Error("Backend not ready");
                 }
-            } catch (e) {
+            } catch {
+                if (!isMounted) return;
                 // retry until the backend wakes up (Render free cold start)
-                retryRef.current = setTimeout(ping, 3000);
+                retryRef.current = setTimeout(ping, delayMsRef.current);
+                delayMsRef.current = Math.min(delayMsRef.current + 500, 5000);
             }
         };
 
         ping();
 
         return () => {
+            isMounted = false;
             controller.abort();
             if (retryRef.current) clearTimeout(retryRef.current);
         };
