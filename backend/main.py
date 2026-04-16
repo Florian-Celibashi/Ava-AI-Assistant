@@ -228,6 +228,8 @@ async def ask_ava(msg: AskRequest) -> AskResponse:
         )
 
     hits = context_index.search(msg.question, top_k=settings.max_context_chunks)
+    if not hits:
+        hits = context_index.fallback(top_k=settings.max_context_chunks)
     source_chunks = [hit.text for hit in hits]
     context_block = "\n\n---\n\n".join(source_chunks) if source_chunks else "No context snippets matched."
 

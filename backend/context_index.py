@@ -128,6 +128,13 @@ class ContextIndex:
         top_scores = scores[:top_k]
         return [SearchHit(text=self.chunks[idx], score=score) for idx, score in top_scores]
 
+    def fallback(self, *, top_k: int = 4) -> List[SearchHit]:
+        if not self.chunks or top_k <= 0:
+            return []
+        # Keep deterministic and pull early profile chunks in source order.
+        selected = self.chunks[:top_k]
+        return [SearchHit(text=chunk, score=0.01) for chunk in selected]
+
 
 def build_context_index(context_path: Path) -> ContextIndex:
     with context_path.open("r", encoding="utf-8") as handle:
