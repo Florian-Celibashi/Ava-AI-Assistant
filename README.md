@@ -3,7 +3,7 @@
 ## 🧭 Overview
 - AI copilot that represents Florian professionally to recruiters and collaborators.
 - Combines curated resume context, retrieval-augmented prompts, and a modern chat UI.
-- Ships with FastAPI backend + Vite/React frontend deployable to Render/Vercel.
+- Ships as a single Vercel project: static Vite frontend + FastAPI-powered Python functions under `/api`.
 
 ## ✨ Key Features
 - **Context-aware replies** – Local BM25-style chunk retrieval keeps answers grounded in Florian's experience without extra embedding latency.
@@ -24,12 +24,12 @@
   - Backend: OpenAI Python SDK, python-dotenv for secrets
 - **Services**
   - OpenAI Chat Completions API (model default `gpt-4o-mini`, env override supported)
-  - Optional hosting: Render (backend), Vercel/Netlify (frontend)
+  - Hosting: Vercel (frontend + backend on one domain)
 
 ## 🧩 Architecture Overview
 - **Retrieval Layer** – `context_index.py` builds a local context index from `context.json` and ranks relevant chunks in-memory.
 - **Prompt Orchestration** – `main.py` assembles system persona, retrieved context snippets, bounded history, and user question.
-- **API Layer** – FastAPI exposes `/`, `/healthz`, `/readyz`, and `/ask` with strict request validation and response caching.
+- **API Layer** – FastAPI exposes `/api`, `/api/healthz`, `/api/readyz`, and `/api/ask` with strict request validation and response caching.
 - **Frontend Client** – `frontend/src/App.jsx` manages local chat state, optimistic UI updates, and asynchronous responses.
 - **Startup Notice** – `frontend/src/components/StartupNotice.jsx` continuously pings the backend and surfaces cold-start messaging until ready.
 
@@ -63,13 +63,17 @@ OPENAI_TIMEOUT_SECONDS=45
 
 **frontend/.env**
 ```bash
-VITE_API_URL=http://localhost:8000
+# Leave VITE_API_URL blank in production when using same-domain Vercel deployment.
+# Local dev uses /api proxy to backend:
 VITE_BACKEND_URL=http://localhost:8000
 ```
 
 ## 📁 Folder Structure
 ```
 Ava-AI-Assistant/
+├── api/               # Vercel Python function entrypoints
+│   ├── index.py
+│   └── [...route].py
 ├── backend/           # FastAPI service + local retrieval index
 │   ├── main.py        # API + OpenAI orchestration + caching
 │   ├── context_index.py
@@ -80,6 +84,8 @@ Ava-AI-Assistant/
 │   ├── src/App.jsx
 │   ├── src/components/StartupNotice.jsx
 │   └── vite.config.js
+├── vercel.json        # Single-project build/output config
+├── requirements.txt   # Python deps for Vercel runtime
 └── README.md
 ```
 

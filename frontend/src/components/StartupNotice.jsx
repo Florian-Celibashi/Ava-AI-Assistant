@@ -18,7 +18,7 @@ export default function StartupNotice() {
 
         const ping = async () => {
             try {
-                const res = await fetch(`${API_BASE_URL}/healthz`, {
+                const res = await fetch(`${API_BASE_URL}/api/healthz`, {
                     signal: controller.signal,
                 });
                 if (res.ok) {

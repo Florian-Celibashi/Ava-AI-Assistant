@@ -45,7 +45,7 @@ function App() {
       const timeoutId = setTimeout(() => controller.abort(), 60_000);
       let res;
       try {
-        res = await fetch(`${API_BASE_URL}/ask`, {
+        res = await fetch(`${API_BASE_URL}/api/ask`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

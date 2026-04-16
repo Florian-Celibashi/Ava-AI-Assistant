@@ -11,17 +11,10 @@ export default defineConfig(({ mode }) => {
     plugins: [react(), tailwindcss()],
     server: {
       proxy: {
-        '/ask': {
+        '/api': {
           target: backendUrl,
           changeOrigin: true,
-        },
-        '/healthz': {
-          target: backendUrl,
-          changeOrigin: true,
-        },
-        '/readyz': {
-          target: backendUrl,
-          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, ''),
         },
       },
     },

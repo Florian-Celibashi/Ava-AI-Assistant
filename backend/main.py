@@ -189,22 +189,26 @@ app.add_middleware(
 
 
 @app.get("/")
+@app.get("/api")
 def read_root() -> dict[str, str]:
     return {"message": "Ava AI Assistant backend is live."}
 
 
 @app.get("/healthz")
+@app.get("/api/healthz")
 def healthz() -> dict[str, str]:
     return {"status": "ok"}
 
 
 @app.get("/readyz")
+@app.get("/api/readyz")
 def readyz() -> Dict[str, Union[str, int]]:
     chunk_count = len(app.state.context_index.chunks)
     return {"status": "ready", "context_chunks": chunk_count}
 
 
 @app.post("/ask", response_model=AskResponse)
+@app.post("/api/ask", response_model=AskResponse)
 async def ask_ava(msg: AskRequest) -> AskResponse:
     settings: Settings = app.state.settings
     context_index = app.state.context_index
