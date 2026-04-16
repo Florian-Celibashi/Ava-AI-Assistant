@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import avatar from '../public/avatar.jpeg';
 import './App.css';
-import StartupNotice from "./components/StartupNotice";
 
 const API_BASE_URL = (
   import.meta.env.VITE_API_URL ||
@@ -72,7 +71,7 @@ function App() {
     } catch (error) {
       const fallback = error?.name === 'AbortError'
         ? 'Error: Request timed out. Please try again.'
-        : 'Error: Could not reach Ava backend.';
+        : `Error: ${error?.message || 'Could not reach Ava backend.'}`;
 
       setMessages(prev => [...prev, {
         role: 'assistant',
@@ -89,7 +88,6 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen w-screen md:w-3xl max-w-full mx-auto bg-white shadow-2xl overflow-hidden border border-gray-300">
-      <StartupNotice />
       <div className="flex items-center gap-4 p-4 bg-gray-100 border-b border-gray-300">
         <img src={avatar} alt="Ava" className="w-18 h-18 rounded-full object-cover border" />
         <div>
