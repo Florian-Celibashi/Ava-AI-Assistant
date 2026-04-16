@@ -1,0 +1,8 @@
+.git
+.gitignore
+.vercel
+myenv
+backend/venv
+frontend/node_modules
+frontend/.env
+backend/.env

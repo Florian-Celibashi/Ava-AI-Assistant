@@ -2,12 +2,6 @@ import { useState, useEffect, useRef } from 'react';
 import avatar from '../public/avatar.jpeg';
 import './App.css';
 
-const API_BASE_URL = (
-  import.meta.env.VITE_API_URL ||
-  import.meta.env.VITE_BACKEND_URL ||
-  ''
-).replace(/\/+$/, '');
-
 const MAX_HISTORY_MESSAGES = 8;
 
 function App() {
@@ -44,7 +38,7 @@ function App() {
       const timeoutId = setTimeout(() => controller.abort(), 60_000);
       let res;
       try {
-        res = await fetch(`${API_BASE_URL}/api/ask`, {
+        res = await fetch('/api/ask', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
